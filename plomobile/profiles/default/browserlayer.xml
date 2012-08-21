@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="plomobile"
+     interface="plomobile.interfaces.IAddonSpecific"
+     />
+</layers>

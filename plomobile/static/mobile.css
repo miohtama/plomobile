@@ -1,0 +1,536 @@
+/**
+ * Mobile styles
+ *
+ *
+ */
+
+@media screen and (max-width: 900px) {
+
+body {
+    font-size: 1em;
+    background: #fffffe; /* Set magic marker read by Javascript isMobile() */
+}
+
+#portal-top {
+    overflow: hidden;
+    position: static;
+    float: none;
+}
+
+#portal-header {
+    position: static;
+    width: 100%;
+    overflow: hidden;
+}
+
+#portal-globalnav {
+    /* Make sure we don't allocate width: 100% + 1px,
+       causing horizontal scrollbar to appear */
+    border: 0;
+}
+
+#portal-logo {
+    display: block;
+    margin: 10px;
+}
+
+#portal-logo img {
+    max-width: 100%;
+}
+
+#visual-portal-wrapper {
+    margin: 0;
+    overflow: hidden;
+    background: white;
+}
+
+#portal-columns {
+    position: static;
+    float: none;
+    background: white;
+}
+
+#portal-column-one {
+    display: none;
+}
+
+#portal-column-content {
+    width: 100%;
+    margin: 0;
+    float: none;
+    left: 0;
+    overflow: hidden;
+    position: static;
+    background: white;
+}
+
+
+/* Front page needs special styles */
+.front-page #portal-breadcrumbs {
+       display: none;
+}
+
+/* Carousel scroller is bad in mobile */
+.portletCarouselWrapper {
+    display: none;
+}
+
+#portal-logo,
+#portal-personaltools-wrapper,
+#portal-breadcrumbs {
+    display: none;
+}
+
+#mobile-header {
+    display: block;
+    padding: 0;
+}
+
+/* Don't show these during load,
+ * explicitly enable by JS
+ */
+
+#portal-searchbox,
+#quicklinks,
+#portal-globalnav,
+#anon-personalbar,
+#google_translate_element {
+    display: none;
+}
+
+/* Mobile menu */
+
+#mobile-logo {
+}
+
+.mobile-slide-button {
+    float: right;
+    width: 57px;
+    height: 64px;
+    background: transparent url(mobile_sprite_icons.png) no-repeat top left;
+    display: block;
+    margin: 5px;
+}
+
+#mobile-menu-button {
+    background-position: -57px 0px;
+}
+
+#mobile-search-button {
+    background-position: -114px 0px;
+}
+
+/*
+.mobile-slide-button:hover {
+    background-position: 0px 0px !important ;
+}*/
+
+#mobile-menu-button.active,
+#mobile-search-button.active {
+    background-position: 0px 0px;
+}
+
+#mobile-slide-menu,
+#mobile-slide-search {
+    display: none;
+    border-bottom: 3px solid #1D3061;
+}
+
+#mobile-slide-menu > ul {
+    width: 50%;
+    float: left;
+    display: block;
+}
+
+#mobile-slide-menu li {
+    display: list-item;
+    margin-bottom: 0.5em;
+    width: 100%;
+}
+
+#mobile-slide-menu .heading {
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+}
+
+#mobile-slide-menu a,
+#mobile-slide-menu a:visited,
+#mobile-slide-menu a:active,
+#mobile-slide-menu a:hover {
+    color: white;
+    border-radius: 1em;
+    border: 1px solid #426EEB;
+    padding: 0.5em;
+    margin: 0 0.5em;
+    display: block;
+
+}
+
+/* Used for mobile click style */
+#mobile-slide-menu a:hover {
+    background: #ddd;
+}
+
+#mobile-slide-menu a.selected {
+    background-color: #426EEB;
+    color: #FFFFFF;
+}
+
+#mobile-quick-link-entries img  {
+    display: none;
+}
+
+/* Mobile search */
+#portal-searchbox {
+    width: 100%;
+    float: none;
+}
+
+#livesearch0 {
+    margin: 5px;
+}
+
+/* No live on search mobile */
+#LSResult {
+}
+
+#portal-searchbox input {
+    font-size: 1em;
+}
+
+.LSBox {
+    margin: 0.4em 1em;
+}
+
+#searchgadget {
+    width: 100%;
+    -webkit-border-radius: 0.6em;
+}
+
+/* Don't show button, apply search on touch kbd "enter" */
+#portal-top .searchButton {
+    display: none;
+}
+
+.searchSection {
+    font-size: 1em;
+    margin: 1em 0;
+}
+
+
+/* On all pages default to 0 padding so that tile link lists can look proper.
+ * We enable padding later view by view basis.
+ */
+
+#content {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+#content-core {
+    padding: 0;
+}
+
+.documentActions {
+    display: none;
+}
+
+/* Footer fixes */
+
+#portal-footer {
+    text-align: center;
+}
+
+
+#portal-siteactions {
+    display: none;
+}
+
+/* Discussion is disabled on mobile */
+
+.discussion {
+    display: none;
+}
+
+/* Content images should match the screen width, not overflow */
+
+.image-inline {
+    max-width: 100%;
+}
+
+dl.portlet {
+    margin-bottom: 0 !important;
+}
+
+dl.portlet .portletHeader {
+    padding: 0.5em;
+    /* Make sure portlet header bg image scales on mobile */
+    background: transparent;
+    margin-bottom: 0;
+}
+
+dl.portlet dt.portletHeader,
+dl.portlet dt.portletHeader a,
+dl.portlet dt.portletHeader a:link,
+dl.portlet dt.portletHeader a:visited {
+    font-size: 1.2em;
+}
+
+/* No bottom border */
+
+#portlets-below {
+    background: transparent;
+    padding: 0;
+}
+
+#portlets-footer {
+    padding-bottom: 2em;
+}
+
+#portlets-footer dl.portlet dd.portletItem {
+    padding: 0.5em;
+    padding-bottom: 0;
+}
+
+#portlets-footer dl {
+    border: 0;
+    box-shadow: 0 0 0;
+}
+
+/* Align date more nicely */
+#portlets-footer .portletItemDetails {
+    margin-left: 0;
+}
+
+
+dd.portletFooter {
+    padding-left: 0 !important;
+}
+
+/* Undo "More" styling */
+dl.portlet .portletFooter a {
+    text-indent: 0;
+    background: transparent;
+    height: auto;
+    position: static;
+}
+
+/**
+ * Make links more iPhone'ish
+ *
+ * Front page links
+ *
+ * News section links
+ */
+
+/* Headings on separate lines */
+.mobile-tile-link .summary {
+    display: block;
+}
+
+/* Add seperation for FP portlet, news listing */
+.portletItem, .portletFooter, .tileItem,
+#content-core .mobile-tile-link {
+       border-bottom: 1px solid #ccc;
+}
+
+#content-core .mobile-tile-link:first-child {
+    border-top: 1px solid #ccc;
+}
+
+
+#parent-fieldname-title,
+#parent-fieldname-description,
+#content-core .tileItem {
+    padding: 0.5em 0.5em;
+}
+
+/* No icons on front page listing */
+.portletItem img[alt="News Item"],
+.portletItem img[alt="Feed Item"] {
+    display: none;
+}
+
+.portlet-static-about-iw-learn .mobile-tile-link {
+    border-top: 1px solid #ccc;
+    padding-top: 0.5em !important;
+}
+
+#portlets-footer .portlet {
+    min-height: 0;
+}
+
+/* Mobile tile links generated by Javascript */
+.mobile-tile-link {
+       cursor: pointer !important;
+       border-right-width: 15px;
+       background: transparent url(++resource++plomobile/mobile_tile_link_icon.png) no-repeat center right !important;
+}
+
+.mobile-tile-link > * {
+    cursor: pointer;
+    padding-right: 16px;
+}
+
+.mobile-tile-link:hover {
+    background: #eee url(++resource++plomobile/mobile_tile_link_icon.png) no-repeat center right !important;
+}
+
+/* News etc. pagination */
+
+#content div.listingBar {
+    margin: 0 0.5em;
+}
+
+#content .listingBar a,
+#content .listingBar a:visited,
+#content .listingBar a:active  {
+    color: #205C90;
+    border: 1px solid #205C90 !important;
+}
+
+#content .listingBar a:hover {
+    background-color: #205C90;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#content .listingBar a,
+#content .listingBar a:visited,
+#content .listingBar a:active,
+#content .listingBar a:hover,
+#content .listingBar a::link,
+#content div.listingBar span.current {
+    margin-left: 1em;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 1.5em;
+    padding: 0.5em;
+    display: inline-block;
+    text-align: center;
+    margin: 0.5em;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+div.listingBar .next {
+    background: white;
+    float: none;
+}
+
+/* Make space for right arrow image */
+div.listingBar .next a {
+    padding-right: 30px !important;
+}
+
+
+#content .listingBar span:first-child a,
+#content .listingBar a:first-child {
+    margin-left: 0;
+}
+
+/* Generic Plone form style fixes */
+
+input, select {
+    font-size: 1em;
+    height: auto !important;
+}
+
+input[type=checkbox] {
+    /*-webkit-appearance: none;*/
+    min-height: 2.5em;
+    margin-right: 0.5em;
+}
+
+#content > h1 {
+    margin-left: 0;
+}
+
+#content > div {
+    margin: 0;
+}
+
+#content .documentDescription {
+    margin: 0.5em;
+}
+
+#content .documentDescription {
+    font-size: 150% !important;
+}
+
+table {
+    font-size: 1em;
+}
+
+table.plain th, table.plain td {
+    font-size: 1em;
+}
+
+
+#content form,
+#content select,
+#content input {
+    font-size: 1em;
+}
+
+#content legend {
+    font-size: 1em;
+}
+
+/* Fix fieldsets on document search form */
+fieldset > .field {
+    display: block !important;
+    float: none !important
+}
+
+/* Events */
+
+table.listing {
+    font-size: 1em;
+}
+
+.template-atct_topic_view .documentByLine {
+    color: #aaa;
+    display: block;
+}
+
+/* SVG images do not work properly on mobile */
+#content svg {
+    display: none;
+}
+
+ /**
+  * .listing classes - where ????
+  */
+.listing th img {
+    display: none;
+}
+
+#content .listing tbody ul {
+    margin-left: 0;
+}
+
+.listing tbody ul li {
+    list-style-type: none;
+}
+
+
+/* Inline table of contents */
+#document-toc {
+    width: 100%;
+}
+
+/* Search results */
+
+.searchResults a {
+    display: block;
+}
+
+} /* end of @media */
+

@@ -4,8 +4,6 @@
  *
  */
 
-@media screen and (max-width: 900px) {
-
 body {
     font-size: 1em;
     background: #fffffe; /* Set magic marker read by Javascript isMobile() */
@@ -531,6 +529,4 @@ table.listing {
 .searchResults a {
     display: block;
 }
-
-} /* end of @media */
 

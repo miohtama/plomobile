@@ -13,6 +13,7 @@ from five import grok
 
 # Plone imports
 from plone.app.layout.viewlets.interfaces import IPortalFooter
+from plone.app.layout.viewlets.interfaces import IPortalHeader
 
 # Local imports
 from interfaces import IAddonSpecific
@@ -25,4 +26,12 @@ grok.layer(IAddonSpecific)
 # You can register viewlets to be content item type specific
 # by overriding grok.context() on class body level
 grok.context(Interface)
+
+class MobileUI(grok.Viewlet):
+    """
+    Contains HTML payload for rendering mobile menus and such.
+
+    This is supplement for mobile.js - inline HTML in JS is always ugly.
+    """
+    grok.viewletmanager(IPortalHeader)
 

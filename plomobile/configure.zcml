@@ -26,13 +26,6 @@
 
   <cmf:registerDirectory name="skins" directory="skins" recursive="True"/>
 
-  <!-- Declare mapping between portal_skins theme name and Zope 3 browser layers -->
-  <interface
-      interface=".interfaces.IThemeSpecific"
-      type="zope.publisher.interfaces.browser.IBrowserSkinType"
-      name="plomobile"
-      />
-
   <!--
     Load template overrides using z3c.jbot
   -->

@@ -1,0 +1,34 @@
+<div id="mobile-header" i18n:domain="plomobile">
+
+    <a tal:attributes="contex/@@plone_portal_state/navigation_root" id="mobile-logo">
+        XXX
+    </a>
+
+    <a id="mobile-menu-button" class="mobile-slide-button" href="#">
+    </a>
+
+    <a id="mobile-search-button"  class="mobile-slide-button" href="#">
+    </a>
+
+    <div style="clear: both"><!-- --></div>
+
+    <div id="mobile-slide-menu" class="mobile-slide">
+      <ul id="mobile-menu-entries">
+          <li class="heading">
+              Sections
+          </li>
+      </ul>
+
+      <ul id="mobile-quick-link-entries">
+          <li class="heading">
+              Quick links
+          </li>
+      </ul>
+
+      <div style="clear: both"><!-- --></div>
+    </div>
+
+    <div id="mobile-slide-search" class="mobile-slide">
+    </div>
+
+</div>

@@ -20,7 +20,7 @@ from five import grok
 from Products.CMFCore.interfaces import ISiteRoot
 
 # Local imports
-from interfaces import IAddonSpecific, IThemeSpecific
+from interfaces import IAddonSpecific
 
 grok.templatedir("templates")
 grok.layer(IAddonSpecific)

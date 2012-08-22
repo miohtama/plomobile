@@ -8,8 +8,13 @@
 
    <stylesheet
       id="++resource++plomobile/mobile.css"
-      media="" rel="stylesheet" rendering="import"
+      media="screen and (max-width: 900px)" rel="stylesheet" rendering="import"
       cacheable="True" compression="safe" cookable="True"
-      enabled="1" expression="" insert-after="ploneKss.css"/>
+      enabled="1" expression="" insert-after="mobile.css"/>
+
+   <!-- Disable out of the box mobile.css -->
+   <stylesheet
+      id="mobile.css"
+      enabled="0" />
 
 </object>

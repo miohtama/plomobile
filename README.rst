@@ -32,11 +32,21 @@ The mobile.css contains fixes for popular Plone add-ons, including
 Custom mobilization Javascript
 --------------------------------
 
+Plomobile runs a client-side UI patching Javascript
+when the browser window is shrinked to mobile dimensions,
+or on the page open, if you have small enough screen to the begin with.
+
 You probably want to adjust Javascript fixes for your custom site theme.
 
 This can be done by overriding ``windows.mobilize()`` function from
-your Javascript code. Just code the existing ``mobilize()`` from ``mobile.js``
+your Javascript code, loaded after ``mobile.js``.
+Just code the existing ``mobilize()`` from ``mobile.js``
 and add in your site specific logic.
+
+If you do not need to change the default handler you can also use the
+following jQuery event::
+
+
 
 History
 -----------

@@ -2,10 +2,14 @@
  * Plomobile cliet side tune ups - when CSS is not enough
  */
 
-/*global window, document*/
+/*global window, document, console*/
 
 (function($) {
     "use strict";
+
+    // http://opensourcehacker.com/2011/03/15/everyone-loves-and-hates-console-log/
+    // Ignore console on platforms where it is not available
+    if (typeof(window.console) == "undefined") { window.console = {}; window.console.log = window.console.warn = window.console.error = function(a) {}; }
 
     function endsWith(line, str) {
         var lastIndex = line.lastIndexOf(str);
@@ -51,13 +55,18 @@
             if(anyVisible) {
                 this.closeSlides(openAfterClose);
             } else {
-                this.openAfterClose();
+                openAfterClose();
             }
         },
 
         /**
          * Make elements "tile link" by applying a click handler which will take to the first <a>
          * target inside the element.
+         *
+         * This will make tiles take full horizontal width and have hint arrow that
+         * the whole tile is clickable.
+         *
+         * Tile elements are usually expressed as <li><a> notation
          *
          * @param {Object} jQuery selector of tiles.
          */
@@ -86,6 +95,37 @@
         },
 
         /**
+         * Populate the left side of the menu
+         *
+         */
+        createSections : function() {
+
+            // Copy portal_tabs to mobile menu
+            var target = $("#mobile-menu-entries");
+            $("#portal-globalnav li").each(function() {
+                var t = $(this).clone(false);
+                t.appendTo(target);
+            });
+
+        },
+
+        /**
+         * Populate right side of the menu
+         *
+         */
+        createQuickMenu : function() {
+
+            // Move quick menu
+            var target = $("#mobile-quick-link-entries");
+            $(".globalnav #effect li").each(function() {
+                var t = $(this).clone(false);
+                t.appendTo(target);
+            });
+
+
+        },
+
+        /**
          * Mangle HTML so that
          *
          * - portal tabs are moved to mobile menu
@@ -95,21 +135,9 @@
         createMenu : function() {
 
             var self = this;
-            var target = $("#mobile-menu-entries");
 
-            // Move tabs
-            $("#portal-globalnav li").each(function() {
-                var t = $(this).clone(false);
-                t.appendTo(target);
-            });
-
-
-            // Move quick menu
-            target = $("#mobile-quick-link-entries");
-            $(".globalnav #effect li").each(function() {
-                var t = $(this).clone(false);
-                t.appendTo(target);
-            });
+            this.createSections();
+            this.createQuickMenu();
 
             // Create switcher
             $("#mobile-menu-button").click(function(e) {
@@ -203,6 +231,12 @@
             // Query thru jQuery for maximum compatibility
             var color = $(document.body).css("backgroundColor");
 
+            if(!color) {
+                // The document body is missing explicit background color used to identify when mobile.css
+                // kicks in
+                return;
+            }
+
             // Magic bg color set in mobile.css
             return (color.toLowerCase() == "rgb(255, 255, 254)");
         },
@@ -259,6 +293,9 @@
          */
         mobilize : function() {
 
+            console.log("mobilizestart");
+            $(document).trigger("mobilizestart", [this]);
+
             if(this.areWeMobileYet) {
                 return;
             }
@@ -276,7 +313,8 @@
 
             this.disableIcons();
 
-            $(document).trigger("mobilize");
+            console.log("mobilizeend");
+            $(document).trigger("mobilizeend", [this]);
 
             this.areWeMobileYet = true;
         },
@@ -290,6 +328,8 @@
             // Detect if we need to run mobile mangle and do it only once
             if(this.isMobile()) {
                 this.mobilize();
+            } else {
+                console.log("Not a mobile when mobilize.bootstrap()");
             }
 
             // Also go mobile when browser window is shrinked
@@ -305,6 +345,6 @@
     // Export mobilize namespace
     window.mobilize = mobilize;
 
-    mobilize.boostrap();
+    $(document).ready($.proxy(mobilize.boostrap, mobilize));
 
 })(jQuery);

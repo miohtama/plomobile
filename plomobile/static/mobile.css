@@ -6,9 +6,8 @@
 
 body {
     font-size: 1em;
-    background: #fffffe; /* Set magic marker read by Javascript isMobile() */
+    background: #fffffe !important; /* Set magic marker read by Javascript isMobile() */
 }
-
 
 #portal-top {
     overflow: hidden;
@@ -34,7 +33,7 @@ body {
 }
 
 #portal-logo img {
-    max-width: 100%;
+    max-width: 30%;
 }
 
 #visual-portal-wrapper {
@@ -89,6 +88,11 @@ body {
 #mobile-header {
     display: block;
     padding: 0;
+}
+
+#mobile-header,
+#mobile-slide-menu {
+    background: #10B6DE;
 }
 
 /**
@@ -165,9 +169,10 @@ body {
 #mobile-slide-menu a:visited,
 #mobile-slide-menu a:active,
 #mobile-slide-menu a:hover {
-    color: white;
+    color: black;
     border-radius: 1em;
     border: 1px solid #426EEB;
+    background: white;
     padding: 0.5em;
     margin: 0 0.5em;
     display: block;

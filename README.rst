@@ -63,17 +63,50 @@ when the browser window is shrinked to mobile dimensions,
 or on the page open, if you have small enough screen to the begin with.
 
 You probably want to adjust Javascript fixes for your custom site theme.
+Plomobile provides two jQuery events which both take ``mobilize``
+object as the argument besides the event itself.
 
-This can be done by overriding ``windows.mobilize()`` function from
-your Javascript code, loaded after ``mobile.js``.
-Just code the existing ``mobilize()`` from ``mobile.js``
-and add in your site specific logic.
+* mobilizestart - allows you to override the whole process
 
-If you do not need to change the default handler you can also use the
-following jQuery event::
+* mobilizeend - listen for this to run custom mobilization JS besides
+  the orignal Plomobile mobile.js
+
+Example::
+
+    /**
+     * Custom theme cliet side tune ups - when CSS is not enough
+     */
+
+    /*global window, document, console*/
+
+    (function($) {
+        "use strict";
+
+        // Run custom mobile UI tweaks
+        $(document).bind("mobilizeend", function(event, mobilize) {
+
+            // Convert site custom layouts to mobile friendly UI
+
+            // Convert product listings items to tile links
+            mobilize.applyTileLinks(".summary-info");
+        });
+
+    })(jQuery);
 
 
-    xxx
+Then register your Javascript as::
+
+
+    <object name="portal_javascripts">
+
+        <!-- Make sure our custom JS event handlers are installed before we run mobilize bootsrap -->
+        <javascript
+            id="++resource++yourtheme/mobile.js"
+            cacheable="True" compression="safe" cookable="True"
+            enabled="True" expression=""  inline="False" insert-before="++resource++plomobile/mobile.js"/>
+
+    </object>
+
 
 History
 -----------

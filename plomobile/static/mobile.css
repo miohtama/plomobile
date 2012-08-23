@@ -80,8 +80,7 @@ body {
 }
 
 #portal-logo,
-#portal-personaltools-wrapper,
-#portal-breadcrumbs {
+#portal-personaltools-wrapper {
     display: none;
 }
 
@@ -353,9 +352,6 @@ dl.portlet .portletFooter a {
     border-top: 1px solid #ccc;
 }
 
-
-#parent-fieldname-title,
-#parent-fieldname-description,
 #content-core .tileItem {
     padding: 0.5em 0.5em;
 }
@@ -459,16 +455,17 @@ input[type=checkbox] {
     margin-right: 0.5em;
 }
 
-#content > h1 {
-    margin-left: 0;
+
+/* Add readbility margin to content text */
+#content-core,
+#content .documentDescription,
+#content .documentFirstHeading {
+    margin: 0 10px; /* Note: need to use px as em reacts to different font size*/
 }
 
-#content > div {
+/* Content area with tile links need always special handling */
+#content-core.content-core-tile-links {
     margin: 0;
-}
-
-#content .documentDescription {
-    margin: 0.5em;
 }
 
 #content .documentDescription {

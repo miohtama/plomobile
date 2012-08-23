@@ -66,9 +66,12 @@
          * This will make tiles take full horizontal width and have hint arrow that
          * the whole tile is clickable.
          *
-         * Tile elements are usually expressed as <li><a> notation
+         * Tile elements are usually expressed as <li><div></div><a></a> or similar notation and then you need
+         * to feed <li> elements as the selector for this function.
          *
-         * @param {Object} jQuery selector of tiles.
+         * @param {Object} jQuery selector expression of tiles.
+         *
+         * @return {Object} jQuery selection object used for the manipulation
          */
         applyTileLinks : function(selector) {
 
@@ -77,21 +80,26 @@
             selector.click(function(e) {
 
                 var $this = $(this);
-                var a = $this.find("a");
+                var a = $this.find("a"); // Get the primary link in this tile
                 var elem = a.get(0);
+                var target = $(e.target);
 
-                e.preventDefault();
 
-                if(!$this.attr("href")) {
+
+                // We clicked area in tile which is not link
+                if(!target.attr("href")) {
+                    e.preventDefault();
                     window.location = a.attr("href");
                     return false;
                 } else {
-                    // The tile was a link itself, let native link handling take over
+                    // The clicked element was a link itself, let the native link handling take over
                     return true;
                 }
             });
 
             selector.addClass("mobile-tile-link");
+
+            return selector;
         },
 
         /**
@@ -149,7 +157,9 @@
         },
 
         /**
-         * Create hidden mobile search
+         * Create mobile search slide menu.
+         *
+         * Move the actual #portal-searchbox inside the menu using jQuery.
          */
         createSearch : function() {
             var self = this;
@@ -191,7 +201,7 @@
          * Convert <dd> <dt> styles listing to mobile tile links.
          *
          */
-        fixFolderListing : function() {
+        applyTileLinksOnPloneListing : function() {
 
             // Select raw folder listing and AT topic listing
             var itemBodies = $(".template-folder_listing #content-core dd, .template-atct_topic_view #content-core dd, .template-search .searchResults dd");
@@ -280,6 +290,23 @@
         },
 
         /**
+          * Normally #content-core area in Plone contains page body text and
+          * we add margins for it for better text readability.
+          *
+          * However if the content-core contains tile links those links need to
+          * reach the full viewport area from left edge to right edge.
+          *
+          * We fix this situation by detecting tile links and then adding
+          * a special CSS class on #content-core so this issue can be worked around in CSS.
+          *
+          */
+        fixContentCoreWithTileLinks : function() {
+            if($("#content-core .mobile-tile-link").size() > 0) {
+                $("#content-core").addClass("content-core-tile-links");
+            }
+        },
+
+        /**
          * Mangle HTML on the client side so that it matches mobile layout.
          *
          * Do changes what we cannot achieve with pure CSS.
@@ -305,7 +332,7 @@
             this.createTileLinkSections();
 
             this.fixListingBar();
-            this.fixFolderListing();
+            this.applyTileLinksOnPloneListing();
 
             this.defloatImages();
             this.defloatEventDetails();
@@ -315,6 +342,10 @@
 
             console.log("mobilizeend");
             $(document).trigger("mobilizeend", [this]);
+
+            // Run this post mobilizeend as the
+            // custom handler may insert its own tile links
+            this.fixContentCoreWithTileLinks();
 
             this.areWeMobileYet = true;
         },

@@ -1,8 +1,8 @@
 /**
- * Plomobile cliet side "fixes" - when CSS is not enough
+ * Plomobile cliet side tune ups - when CSS is not enough
  */
 
-/*global window, document, $*/
+/*global window, document*/
 
 (function($) {
     "use strict";

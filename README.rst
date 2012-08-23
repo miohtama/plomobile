@@ -6,6 +6,18 @@ Introduction
 Plomobile is a modern mobile site solution for Plone. It focuses on delivering
 good accetable user experience for read-only site access on most mobile phones.
 
+Design goals
+--------------
+
+* Mobile browsers get mobile optimized and mobile specific buttons for better user experience
+
+* Desktop and tablets can use desktop version as is
+
+* Depends on jQuery for DOM manipulation
+
+* Server-side changes kept minimal: serve the same HTML payload regardless of the HTTP user agent and thus
+  make static caching and CDN easy
+
 Responsivity on steroids
 --------------------------
 

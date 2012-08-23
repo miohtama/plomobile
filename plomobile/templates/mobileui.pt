@@ -1,6 +1,6 @@
 <div id="mobile-header" i18n:domain="plomobile">
 
-    <a tal:attributes="contex/@@plone_portal_state/navigation_root" id="mobile-logo">
+    <a tal:attributes="href context/@@plone_portal_state/navigation_root" id="mobile-logo">
         XXX
     </a>
 

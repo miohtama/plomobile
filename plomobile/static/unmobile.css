@@ -1,0 +1,7 @@
+/**
+ * Hide mobile elements on desktop user agents
+ */
+
+#mobile-header {
+    display: none;
+}

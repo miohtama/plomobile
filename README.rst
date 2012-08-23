@@ -6,11 +6,12 @@ Introduction
 Plomobile is a modern mobile site solution for Plone. It focuses on delivering
 good accetable user experience for read-only site access on most mobile phones.
 
-Responsive on steroids
+Responsivity on steroids
 --------------------------
 
 Differences over normal responsive themes, e.g. Plone's default Sunburst theme,
-include UI tweaks which optimize the layout more for mobile
+include UI tweaks which optimize the layout more for mobile. These
+tweaks cannot be achieved with CSS tuning alone.
 
 * Menu button replaces portal tabs
 
@@ -20,14 +21,27 @@ include UI tweaks which optimize the layout more for mobile
 
 * Suffling UI elements around for more sane mobile layout
 
-Supported fixes
------------------
+Supported add-on tweaks
+-------------------------
 
 The mobile.css contains fixes for popular Plone add-ons, including
 
 * Content well portlets
 
 * Products.Carousel
+
+Customizing mobile CSS
+-------------------------
+
+Override the default Plomobile CSS styles by using a
+``cssregistry.xml`` entry similar to one below::
+
+   <stylesheet
+      id="++resource++yourtheme/mobile.css"
+      media="screen and (max-width: 900px)" rel="stylesheet" rendering="import"
+      cacheable="True" compression="safe" cookable="True"
+      enabled="1" expression="" />
+
 
 Custom mobilization Javascript
 --------------------------------
@@ -47,6 +61,7 @@ If you do not need to change the default handler you can also use the
 following jQuery event::
 
 
+    xxx
 
 History
 -----------

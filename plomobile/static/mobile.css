@@ -9,6 +9,7 @@ body {
     background: #fffffe; /* Set magic marker read by Javascript isMobile() */
 }
 
+
 #portal-top {
     overflow: hidden;
     position: static;
@@ -62,13 +63,19 @@ body {
     background: white;
 }
 
-
-/* Front page needs special styles */
-.front-page #portal-breadcrumbs {
-       display: none;
+/**
+ * Make sure all portlets are in one column by default.
+ *
+ * Syntax: <div class="cell PortletsContentBelowBelow1 width-1:3 position-0">;
+ */
+#visual-portal-wrapper .cell {
+    float: none;
+    position: static;
+    width: 100% !important;
+    margin-left: 0 !important;
 }
 
-/* Carousel scroller is bad in mobile */
+/* Do not display carousel in mobile */
 .portletCarouselWrapper {
     display: none;
 }
@@ -84,15 +91,16 @@ body {
     padding: 0;
 }
 
-/* Don't show these during load,
- * explicitly enable by JS
+/**
+ *
+ * Don't show these during load,
+ * Ωe later explicitly shwo there by JS.
+ * This prevents some ugly flickering problem if page loads slowly.
  */
-
 #portal-searchbox,
 #quicklinks,
 #portal-globalnav,
-#anon-personalbar,
-#google_translate_element {
+#anon-personalbar {
     display: none;
 }
 
@@ -111,11 +119,11 @@ body {
 }
 
 #mobile-menu-button {
-    background-position: -57px 0px;
+    background-position: -57px 0;
 }
 
 #mobile-search-button {
-    background-position: -114px 0px;
+    background-position: -114px 0;
 }
 
 /*
@@ -125,7 +133,7 @@ body {
 
 #mobile-menu-button.active,
 #mobile-search-button.active {
-    background-position: 0px 0px;
+    background-position: 0 0;
 }
 
 #mobile-slide-menu,

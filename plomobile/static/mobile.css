@@ -5,8 +5,11 @@
  */
 
 body {
-    font-size: 1em;
+    font-size: 1.5em;
     background: #fffffe !important; /* Set magic marker read by Javascript isMobile() */
+
+    /* http://stackoverflow.com/questions/6210788/how-to-avoid-ios-automatic-font-size-adjustment */
+    -webkit-text-size-adjust: 100%;
 }
 
 #portal-top {
@@ -27,14 +30,6 @@ body {
     border: 0;
 }
 
-#portal-logo {
-    display: block;
-    margin: 10px;
-}
-
-#portal-logo img {
-    max-width: 30%;
-}
 
 #visual-portal-wrapper {
     margin: 0;
@@ -79,14 +74,34 @@ body {
     display: none;
 }
 
-#portal-logo,
+/* Unsupported on mobile for now */
 #portal-personaltools-wrapper {
     display: none;
 }
 
+/* Display cloned logo only inside mobile header */
+#portal-logo {
+    display: none;
+}
+
+#mobile-header #portal-logo {
+    display: block;
+    float: left;
+}
+
+#portal-logo img {
+    max-width: 64px;
+}
+
+
 #mobile-header {
     display: block;
     padding: 0;
+
+    -webkit-box-shadow: 0 3px 3px rgba(180, 180, 180, 0.6);
+    -moz-box-shadow: 0 3px 3px  rgba(180, 180, 180, 0.6);
+    box-shadow: 0 3px 3px rgba(180, 180, 180, 0.6);
+    margin-bottom: 5px;
 }
 
 #mobile-header,
@@ -142,13 +157,18 @@ body {
 #mobile-slide-menu,
 #mobile-slide-search {
     display: none;
-    border-bottom: 3px solid #1D3061;
 }
 
+/* One menu */
 #mobile-slide-menu > ul {
-    width: 50%;
+    width: 100%;
     float: left;
     display: block;
+}
+
+/* Sections + quick links menus */
+#mobile-slide-menu.mobile-slide-quick-links > ul {
+    width: 50%;
 }
 
 #mobile-slide-menu li {
@@ -170,12 +190,11 @@ body {
 #mobile-slide-menu a:hover {
     color: black;
     border-radius: 1em;
-    border: 1px solid #426EEB;
     background: white;
     padding: 0.5em;
     margin: 0 0.5em;
     display: block;
-
+    box-shadow: 0 0 3px #222;
 }
 
 /* Used for mobile click style */
@@ -206,29 +225,38 @@ body {
 #LSResult {
 }
 
-#portal-searchbox input {
-    font-size: 1em;
-}
-
 .LSBox {
-    margin: 0.4em 1em;
+    margin: 1em;
 }
 
-#searchgadget {
-    width: 100%;
+#portal-searchbox #searchGadget {
+    font-size: 1.5em;
+    width: 80%;
     -webkit-border-radius: 0.6em;
+    border-radius: 0.6em;
+    -webkit-appearance: none;
+    background: white;
 }
 
 /* Don't show button, apply search on touch kbd "enter" */
 #portal-top .searchButton {
     display: none;
+    font-size: 1.5em;
 }
 
 .searchSection {
     font-size: 1em;
     margin: 1em 0;
+    display: none; /* Hidden for better UX for now */
 }
 
+/* Breadcrumbs */
+
+/* Super-specific to make sure we override desktop theme */
+#visual-portal-wrapper #portal-breadcrumbs {
+    font-size: 1em;
+    margin-top: 0;
+}
 
 /* On all pages default to 0 padding so that tile link lists can look proper.
  * We enable padding later view by view basis.
@@ -463,13 +491,13 @@ input[type=checkbox] {
     margin: 0 10px; /* Note: need to use px as em reacts to different font size*/
 }
 
+#content .documentDescription {
+    font-size: 1em !important;
+}
+
 /* Content area with tile links need always special handling */
 #content-core.content-core-tile-links {
     margin: 0;
-}
-
-#content .documentDescription {
-    font-size: 150% !important;
 }
 
 table {

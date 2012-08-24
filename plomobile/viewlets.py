@@ -27,6 +27,7 @@ grok.layer(IAddonSpecific)
 # by overriding grok.context() on class body level
 grok.context(Interface)
 
+
 class MobileUI(grok.Viewlet):
     """
     Contains HTML payload for rendering mobile menus and such.
@@ -35,3 +36,22 @@ class MobileUI(grok.Viewlet):
     """
     grok.viewletmanager(IPortalHeader)
 
+    def update(self):
+        """
+        Get mobile quick links.
+        """
+
+        context_state = getMultiAdapter((self.context, self.request), name=u'plone_context_state')
+        self.quick_links = context_state.actions("mobile_quick_links")  # id -> action mappings
+        self.quick_links = [ql for ql in self.quick_links if ql["visible"] == True]
+
+    def getMenuCSSClass(self):
+        classes = "mobile-slide"
+        if self.hasQuickLinks():
+            classes += " mobile-slide-quick-links"
+        return classes
+
+    def hasQuickLinks(self):
+        """
+        """
+        return self.quick_links

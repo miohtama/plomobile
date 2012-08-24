@@ -307,6 +307,16 @@
         },
 
         /**
+         * Copies portal logo to mobile header, strips width and height from the <img>
+         *
+         */
+        copyLogo : function() {
+            var target = $("#mobile-logo");
+            $("#portal-logo").clone().appendTo(target);
+            $("#mobile-logo img").removeAttr("width").removeAttr("height");
+        },
+
+        /**
          * Mangle HTML on the client side so that it matches mobile layout.
          *
          * Do changes what we cannot achieve with pure CSS.
@@ -338,6 +348,7 @@
             this.defloatEventDetails();
             this.defloatTOC();
 
+            this.copyLogo();
             this.disableIcons();
 
             console.log("mobilizeend");

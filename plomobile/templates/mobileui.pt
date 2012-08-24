@@ -1,34 +1,31 @@
-<div id="mobile-header" i18n:domain="plomobile">
+<div id="mobile-header" xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="plomobile">
 
-    <a tal:attributes="href context/@@plone_portal_state/navigation_root" id="mobile-logo">
-        XXX
-    </a>
+    <div id="mobile-logo"></div>
 
-    <a id="mobile-menu-button" class="mobile-slide-button" href="#">
-    </a>
+    <a id="mobile-menu-button" class="mobile-slide-button" href="#"></a>
 
-    <a id="mobile-search-button"  class="mobile-slide-button" href="#">
-    </a>
+    <a id="mobile-search-button"  class="mobile-slide-button" href="#"></a>
 
-    <div style="clear: both"><!-- --></div>
+    <div style="clear: both">
+        <!-- --> </div>
 
-    <div id="mobile-slide-menu" class="mobile-slide">
-      <ul id="mobile-menu-entries">
-          <li class="heading">
-              Sections
-          </li>
-      </ul>
+    <div id="mobile-slide-menu" tal:attributes="class viewlet/getMenuCSSClass">
+        <ul id="mobile-menu-entries">
+            <li class="heading" i18n:translate="">Sections</li>
+        </ul>
 
-      <ul id="mobile-quick-link-entries">
-          <li class="heading">
-              Quick links
-          </li>
-      </ul>
+        <ul id="mobile-quick-link-entries" tal:condition="viewlet/hasQuickLinks">
+            <li class="heading" i18n:translate="">Quick links</li>
 
-      <div style="clear: both"><!-- --></div>
+            <li class="quick-link" tal:repeat="action viewlet/quick_links">
+                <a tal:attributes="href action/url" tal:content="action/title" />
+            </li>
+        </ul>
+
+        <div style="clear: both">
+            <!-- --> </div>
     </div>
 
-    <div id="mobile-slide-search" class="mobile-slide">
-    </div>
+    <div id="mobile-slide-search" class="mobile-slide"></div>
 
 </div>

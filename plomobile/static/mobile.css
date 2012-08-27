@@ -131,7 +131,7 @@ body {
     float: right;
     width: 57px;
     height: 64px;
-    background: transparent url(mobile_sprite_icons.png) no-repeat top left;
+    background: transparent url(++resource++plomobile/mobile_sprite_icons.png) no-repeat top left;
     display: block;
     margin: 5px;
 }

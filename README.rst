@@ -113,12 +113,12 @@ History
 
 This add-on replaces old Web and Mobile add-on
 
-* Plomobile is much more lightweight and maintanable solution due to its
+* Plomobile is much more lightweight and maintainable solution due to its
   relying on client-side (Javascript) tricks
 
 * Plomobile plays nicely with Diazo
 
 * All old features of Web and Mobile not supported (different content for different devices)
 
-* Plomobile works on thin-client browsers which support minial on page init Javascript execution
+* Plomobile works on thin-client browsers which support minimal on page init Javascript execution
   (Opera Mini)

@@ -12,6 +12,7 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
+
 #portal-top {
     overflow: hidden;
     position: static;
@@ -286,6 +287,22 @@ body {
 
 #portal-siteactions {
     display: none;
+}
+
+/**
+ * CONTENT STYLES
+ */
+
+#content h1 {
+    font-size: 2em;
+}
+
+#content h2 {
+    font-size: 1.75em;
+}
+
+#content h3 {
+    font-size: 1.6em;
 }
 
 /* Discussion is disabled on mobile */

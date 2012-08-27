@@ -367,6 +367,8 @@
          */
         boostrap : function() {
 
+            var self = this;
+
             // Detect if we need to run mobile mangle and do it only once
             if(this.isMobile()) {
                 this.mobilize();
@@ -377,8 +379,8 @@
             // Also go mobile when browser window is shrinked
             // note that this is
             $(window).resize(function() {
-                if(this.isMobile()) {
-                    this.mobilize();
+                if(self.isMobile()) {
+                    self.mobilize();
                 }
             });
         }

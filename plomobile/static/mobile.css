@@ -126,6 +126,7 @@ body {
 /* Mobile menu */
 
 #mobile-logo {
+    float: left;
 }
 
 .mobile-slide-button {
@@ -191,16 +192,15 @@ body {
 #mobile-slide-menu a:hover {
     color: black;
     border-radius: 1em;
-    background: white;
+    background: white url(++resource++plomobile/quick_menu_arrow.png) no-repeat 90% 50%;
     padding: 0.5em;
     margin: 0 0.5em;
     display: block;
-    box-shadow: 0 0 3px #222;
 }
 
 /* Used for mobile click style */
 #mobile-slide-menu a:hover {
-    background: #ddd;
+    background-color: #ddd;
 }
 
 #mobile-slide-menu a.selected {
@@ -216,6 +216,16 @@ body {
 #portal-searchbox {
     width: 100%;
     float: none;
+}
+
+/* Display search button as text, because it is impossible to adjust pixel image to match mobile input box size */
+.LSBox input.searchButton {
+    text-indent: 0 !important;
+    background: #F7AE25 !important;
+    color: white;
+    padding: 5px;
+    width: auto !important;
+    border: 1px groove #F7AE25 !important;
 }
 
 #livesearch0 {
@@ -267,6 +277,7 @@ body {
     padding: 0;
     border: 0;
     margin: 0;
+    margin-bottom: 0px;
     font-size: 1em;
 }
 
@@ -387,6 +398,16 @@ dl.portlet .portletFooter a {
     display: block;
 }
 
+/* Make sure we don't display extra borderes e.g. on the search result page
+  making it ugly */
+
+.mobile-tile-link a,
+.mobile-tile-link a:visited,
+.mobile-tile-link a:active,
+.mobile-tile-link a:hover {
+    border-bottom: 0 !important;
+}
+
 /* Add seperation for FP portlet, news listing */
 .portletItem, .portletFooter, .tileItem,
 #content-core .mobile-tile-link {
@@ -430,6 +451,12 @@ dl.portlet .portletFooter a {
 
 .mobile-tile-link:hover {
     background: #eee url(++resource++plomobile/mobile_tile_link_icon.png) no-repeat center right !important;
+}
+
+/* folder_listing template */
+#content .content-core-tile-links dd {
+    margin: 0;
+    padding: 20px;
 }
 
 /* News etc. pagination */
@@ -504,8 +531,10 @@ input[type=checkbox] {
 /* Add readbility margin to content text */
 #content-core,
 #content .documentDescription,
-#content .documentFirstHeading {
-    margin: 0 10px; /* Note: need to use px as em reacts to different font size*/
+#content .documentFirstHeading,
+#content .pfg-form, /* PloneFormGen */
+.template-search #content-core .discreet { /* Search results */
+    margin: 0 20px; /* Note: need to use px as em reacts to different font size*/
 }
 
 #content .documentDescription {
@@ -526,6 +555,7 @@ table.plain th, table.plain td {
 }
 
 
+/* Override desktop font mangle for forms */
 #content form,
 #content select,
 #content input {
@@ -534,6 +564,12 @@ table.plain th, table.plain td {
 
 #content legend {
     font-size: 1em;
+}
+
+/* ... otherwise font size does not kick in ... */
+#content input[type=submit] {
+    -webkit-appearance: none;
+    padding: 5px;
 }
 
 /* Fix fieldsets on document search form */

@@ -1,5 +1,8 @@
 .. contents ::
 
+Goals and usage
+=================
+
 Introduction
 -------------
 
@@ -33,14 +36,34 @@ tweaks cannot be achieved with CSS tuning alone.
 
 * Suffling UI elements around for more sane mobile layout
 
+
+Tweaking
+============
+
 Supported add-on tweaks
 -------------------------
 
-The mobile.css contains fixes for popular Plone add-ons, including
+The mobile.css has out of the box support tweaks for popular Plone add-ons, including
 
 * Content well portlets
 
 * Products.Carousel
+
+Expect this list to grow in the future.
+
+Mobile menus
+-------------------------
+
+By default, the mobile header of the site has three pull down lists
+
+* Sections (same as portal tabs)
+
+* Quick links (custom portal_actions in ZMI you can populate)
+
+* Search
+
+Quick links is a hand-built menu for mobile shortcuts
+you need to create yourself in portal_actions.
 
 Customizing mobile CSS
 -------------------------
@@ -107,6 +130,9 @@ Then register your Javascript as::
 
     </object>
 
+
+Other
+=======
 
 History
 -----------

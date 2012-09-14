@@ -546,7 +546,8 @@ input[type=checkbox] {
 #content .documentDescription,
 #content .documentFirstHeading,
 #content .pfg-form, /* PloneFormGen */
-.template-search #content-core .discreet { /* Search results */
+.template-search #content-core .discreet, /* Search results */
+.searchPage { /* Search results */
     margin: 0 20px; /* Note: need to use px as em reacts to different font size*/
 }
 

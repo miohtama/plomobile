@@ -290,6 +290,10 @@ body {
     font-size: 1em;
 }
 
+.template-fg_base_view_p3 #content {
+    margin-bottom: 40px;
+}
+
 #content-core {
     padding: 0;
 }
@@ -585,6 +589,26 @@ table.plain th, table.plain td {
 fieldset > .field {
     display: block !important;
     float: none !important
+}
+
+/* Checkboxes on PFG */
+.ArchetypesMultiSelectionValue {
+    margin-bottom: 1em;
+}
+
+.ArchetypesMultiSelectionValue input[type=checkbox],
+.ArchetypesBooleanWidget input[type=checkbox]{
+    -webkit-transform: scale(1.5, 1.5);
+    margin: 5px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+.ArchetypesMultiSelectionValue label,
+.ArchetypesBooleanWidget label {
+    display: inline-block;
+    width: 80%;
 }
 
 /* Events */

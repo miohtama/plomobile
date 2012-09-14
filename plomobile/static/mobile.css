@@ -198,6 +198,14 @@ body {
     display: block;
 }
 
+#mobile-quick-link-entries a,
+#mobile-quick-link-entries a:active,
+#mobile-quick-link-entries a:visited,
+#mobile-quick-link-entries a:hover {
+    margin-left: 0;
+}
+
+
 /* Used for mobile click style */
 #mobile-slide-menu a:hover {
     background-color: #ddd;
@@ -211,6 +219,7 @@ body {
 #mobile-quick-link-entries img  {
     display: none;
 }
+
 
 /* Mobile search */
 #portal-searchbox {

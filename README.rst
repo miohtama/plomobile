@@ -130,6 +130,26 @@ Then register your Javascript as::
 
     </object>
 
+Conditionally loading Facebook and other external Javascripts
+-----------------------------------------------------------------
+
+Here is an example how to making a Facebook Like Box has been
+made conditionally, so that mobile clients do not load craploads
+of Facebook resources for nothing::
+
+    <div class="fb-like-box" data-href="https://www.facebook.com/pages/xxx/yyy" data-width="292" data-height="337" data-show-faces="false" data-stream="true" data-header="false"></div>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      if(!window.mobilize.isMobile()) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fi_FI/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'facebook-jssdk'));</script>
+
 
 Other
 =======

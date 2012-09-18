@@ -312,6 +312,7 @@ body {
 
 
 #mobile-footer {
+    display: block;
     clear: both;
 }
 

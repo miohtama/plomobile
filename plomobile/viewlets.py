@@ -74,9 +74,8 @@ class MobileUIFooter(grok.Viewlet):
         We need to pull some magic here because section rendering code
         might have been customized...
         """
-        context = self.context.aq_inner
+        context = self.context
         viewlets = Viewlets(context, self.request)
-        viewlets = viewlets.__of__(context)
         sections = viewlets.traverse("plone.global_sections")
 
         # XXX: Get a smarter way to handle this
@@ -91,7 +90,6 @@ class MobileUIFooter(grok.Viewlet):
         """
         context = self.context.aq_inner
         viewlets = Viewlets(context, self.request)
-        viewlets = viewlets.__of__(context)
         searchBox = viewlets.traverse("plone.searchbox")
         searchBox = searchBox.replace("portal-searchbox", "portal-searchbox-mobile")
         return searchBox

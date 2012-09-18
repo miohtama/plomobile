@@ -16,6 +16,13 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <browser:page
+    name="viewlets"
+    class=".viewletrenderer.Viewlets"
+    permission="zope2.View"
+    for="*"
+    />
+
   <genericsetup:registerProfile
       name="default"
       title="plomobile"

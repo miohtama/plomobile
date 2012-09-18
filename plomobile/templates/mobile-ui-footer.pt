@@ -1,17 +1,13 @@
-<div id="mobile-header" xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="plomobile">
-
-    <div id="mobile-logo"></div>
-
-    <a id="mobile-menu-button" class="mobile-slide-button" href="#"></a>
-
-    <a id="mobile-search-button"  class="mobile-slide-button" href="#"></a>
-
-    <div style="clear: both">
-        <!-- --> </div>
+<div id="mobile-footer"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    i18n:domain="plomobile">
 
     <div id="mobile-slide-menu" tal:attributes="class viewlet/getMenuCSSClass">
         <ul id="mobile-menu-entries">
             <li class="heading" i18n:translate="">Sections</li>
+
+            <li tal:replace="structure viewlet/renderSectionsListElements" />
         </ul>
 
         <ul id="mobile-quick-link-entries" tal:condition="viewlet/hasQuickLinks">
@@ -22,10 +18,11 @@
             </li>
         </ul>
 
-        <div style="clear: both">
-            <!-- --> </div>
+        <div style="clear: both"><!-- --> </div>
     </div>
 
-    <div id="mobile-slide-search" class="mobile-slide"></div>
+    <div id="mobile-slide-search" class="mobile-slide">
+        <tal:search-copy replace="structure viewlet/renderSearchBox" />
+    </div>
 
 </div>

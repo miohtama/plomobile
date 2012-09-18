@@ -1,0 +1,7 @@
+<ul>
+    <tal:actions repeat="action python:context.portal_actions.listFilteredActionsFor(context)['portal_tabs']">
+        <li>
+            <a tal:attributes="href action/url; title action/title;" tal:content="action/title">Action title</a>
+        </li>
+    </tal:actions>
+</ul>

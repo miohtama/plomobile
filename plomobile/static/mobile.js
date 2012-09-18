@@ -144,14 +144,19 @@
 
             var self = this;
 
-            this.createSections();
+            // Currently handled on the server-side
+            // for thin client compatibilty
+            // this.createSections();
+
             this.createQuickMenu();
 
             // Create switcher
             $("#mobile-menu-button").click(function(e) {
-                e.preventDefault();
+                if(!self.isThinClient()) {
+                    e.preventDefault();
+                }
                 self.openSlide($("#mobile-slide-menu"), $("#mobile-menu-button"));
-                return false;
+                return self.isThinClient();
             });
 
         },
@@ -163,24 +168,58 @@
          */
         createSearch : function() {
             var self = this;
-            var e = $("#portal-searchbox");
-            e.detach();
-            e.appendTo("#mobile-slide-search");
 
-            e.show(); // post CSS load enabling, to prevent page load flicker
 
+            // Currently handled on the server-side
+            // for thin client compability
+            function moveSearchBox() {
+                var e = $("#portal-searchbox");
+                e.detach();
+                e.appendTo("#mobile-slide-search");
+
+                e.show(); // post CSS load enabling, to prevent page load flicker
+            }
             //e.find("[name=SearchableText]").attr("type", "search");
 
             // Create switcher
             $("#mobile-search-button").click(function(e) {
-                e.preventDefault();
+                if(!self.isThinClient()) {
+                    e.preventDefault();
+                }
                 self.openSlide($("#mobile-slide-search"), $("#mobile-search-button"));
-                return false;
+                return self.isThinClient();
             });
 
             // No live search for mobile
             $("#LSResult").remove();
 
+        },
+
+        /**
+         * Open menus based on the link anchor status.
+         *
+         * Opera Mini and other thin clients might not
+         * correctly process the menu Javascript on the client side.
+         * They, however, always process init Javascript.
+         *
+         * We set the fragment on menu open buttons.
+         * This may or may not trigger reload in Opera Mini.
+         * If the reload is triggered here we catch it and
+         * open menus accordingly.
+         */
+        initMenus : function() {
+            var fragment = window.location.hash;
+
+            // note: we wouldn't need makeReloadCloseable hack if
+            console.log("Frag:" + fragment);
+
+            if(fragment == "#mobile-menu") {
+                this.openSlide($("#mobile-slide-menu"), $("#mobile-menu-button"));
+                $("#mobile-menu-button").attr("href", "#mobile-menu-closed");
+            } else if(fragment == "#mobile-search") {
+                this.openSlide($("#mobile-slide-search"), $("#mobile-search-button"));
+                $("#mobile-search-button").attr("href", "#mobile-menu-closed");
+            }
         },
 
         /**
@@ -252,6 +291,15 @@
         },
 
         /**
+         * True if you cannot rely click etc. handlers to work.
+         */
+        isThinClient : function() {
+            // http://my.opera.com/community/openweb/idopera/
+            return window.opera && "Mobi" in navigator.userAgent;
+            //return true;
+        },
+
+        /**
          * Override Plone's default content icons behavior - never show icons on mobile
          */
         disableIcons : function() {
@@ -306,14 +354,34 @@
             }
         },
 
+
         /**
-         * Copies portal logo to mobile header, strips width and height from the <img>
+         * On non-javascript clients (Opera Mini) the mobile menus and searches
+         * are in the footer by default.
+         *
+         * Javascript enabled clients construct a clickable mobile menus
+         * in the header on the page by moving bits of HTML around.
          *
          */
-        copyLogo : function() {
-            var target = $("#mobile-logo");
-            $("#portal-logo").clone().appendTo(target);
-            $("#mobile-logo img").removeAttr("width").removeAttr("height");
+        relayout : function() {
+
+            if(this.isThinClient()) {
+                // Avoid Opera Mini issues
+                // no client-side clickable elements
+                return;
+            }
+
+            var header = $("#mobile-header");
+            var footer = $("#mobile-footer");
+            var menus = footer.children().detach();
+            header.append(menus);
+
+            $("#mobile-search-link").remove();
+            $(".mobile-slide-button").show();
+
+            // Activated by click
+            $("#mobile-slide-menu").hide();
+            $("#mobile-slide-search").hide();
         },
 
         /**
@@ -337,9 +405,11 @@
                 return;
             }
 
+            this.relayout();
+
             this.createMenu();
             this.createSearch();
-            this.createTileLinkSections();
+            // this.createTileLinkSections();
 
             this.fixListingBar();
             this.applyTileLinksOnPloneListing();
@@ -348,7 +418,7 @@
             this.defloatEventDetails();
             this.defloatTOC();
 
-            this.copyLogo();
+            // this.copyLogo();
             this.disableIcons();
 
             console.log("mobilizeend");
@@ -358,8 +428,12 @@
             // custom handler may insert its own tile links
             this.fixContentCoreWithTileLinks();
 
+            this.initMenus();
+
             this.areWeMobileYet = true;
         },
+
+
 
         /**
          * Do mobile layout fixing or install resize handler on a desktop browser.

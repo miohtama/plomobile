@@ -18,6 +18,8 @@ from plone.app.layout.viewlets.interfaces import IPortalHeader
 # Local imports
 from interfaces import IAddonSpecific
 
+from .viewletrenderer import Viewlets
+
 grok.templatedir("templates")
 grok.layer(IAddonSpecific)
 
@@ -28,13 +30,24 @@ grok.layer(IAddonSpecific)
 grok.context(Interface)
 
 
-class MobileUI(grok.Viewlet):
+class MobileUIHeader(grok.Viewlet):
     """
     Contains HTML payload for rendering mobile menus and such.
 
     This is supplement for mobile.js - inline HTML in JS is always ugly.
     """
     grok.viewletmanager(IPortalHeader)
+    grok.template("mobile-ui-header")
+
+
+class MobileUIFooter(grok.Viewlet):
+    """
+    Contains HTML payload for rendering mobile menus and such.
+
+    This is supplement for mobile.js - inline HTML in JS is always ugly.
+    """
+    grok.viewletmanager(IPortalFooter)
+    grok.template("mobile-ui-footer")
 
     def update(self):
         """
@@ -55,3 +68,30 @@ class MobileUI(grok.Viewlet):
         """
         """
         return self.quick_links
+
+    def renderSectionsListElements(self):
+        """
+        We need to pull some magic here because section rendering code
+        might have been customized...
+        """
+        context = self.context.aq_inner
+        viewlets = Viewlets(context, self.request)
+        viewlets = viewlets.__of__(context)
+        sections = viewlets.traverse("plone.global_sections")
+
+        # XXX: Get a smarter way to handle this
+        sections = sections.replace('<ul id="portal-globalnav">', '')
+        sections = sections.replace('</ul>', '')
+
+        return sections
+
+    def renderSearchBox(self):
+        """
+        Get mobile version of the site search box.
+        """
+        context = self.context.aq_inner
+        viewlets = Viewlets(context, self.request)
+        viewlets = viewlets.__of__(context)
+        searchBox = viewlets.traverse("plone.searchbox")
+        searchBox = searchBox.replace("portal-searchbox", "portal-searchbox-mobile")
+        return searchBox

@@ -156,9 +156,11 @@ body {
     background-position: 0 0;
 }
 
+/* These are visible by default for non-javascript user agents.
+   Then moved to the header and hidden until click  on JS
+   enabled phones */
 #mobile-slide-menu,
 #mobile-slide-search {
-    display: none;
 }
 
 /* One menu */
@@ -222,7 +224,7 @@ body {
 
 
 /* Mobile search */
-#portal-searchbox {
+#portal-searchbox-mobile {
     width: 100%;
     float: none;
 }
@@ -249,19 +251,19 @@ body {
     margin: 1em;
 }
 
-#portal-searchbox #searchGadget {
-    font-size: 1.5em;
-    width: 80%;
-    -webkit-border-radius: 0.6em;
-    border-radius: 0.6em;
+#searchGadget {
+    font-size: 1em !important;
+    width: 80% !important;
+    -webkit-border-radius: 0.6em !important;
+    border-radius: 0.6em !important;
     -webkit-appearance: none;
-    background: white;
+    background: white  !important;
 }
 
 /* Don't show button, apply search on touch kbd "enter" */
-#portal-top .searchButton {
+.searchButton {
     display: none;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .searchSection {
@@ -308,6 +310,10 @@ body {
     text-align: center;
 }
 
+
+#mobile-footer {
+    clear: both;
+}
 
 #portal-siteactions {
     display: none;
@@ -396,6 +402,10 @@ dl.portlet .portletFooter a {
     background: transparent;
     height: auto;
     position: static;
+}
+
+#portal-bottom {
+    margin: 0 !important;
 }
 
 /**
@@ -653,5 +663,13 @@ table.listing {
 
 .searchResults a {
     display: block;
+}
+
+/* Image portlet carousels are hidden by default
+   and then set visible by Javascript
+  */
+
+.image-portlet-carousel {
+    display: none;
 }
 

@@ -1,0 +1,17 @@
+<div id="mobile-header"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    i18n:domain="plomobile">
+
+    <div id="mobile-logo">
+        <!-- -->
+        <tal:logo-copy replace="structure context/@@viewlets/plone.logo" />
+    </div>
+
+    <a id="mobile-menu-button" style="display: none" class="mobile-slide-button" href="#mobile-menu"></a>
+
+    <a id="mobile-search-button"  style="display: none"  class="mobile-slide-button" href="#mobile-search"></a>
+
+    <div style="clear: both"><!-- --></div>
+
+</div>

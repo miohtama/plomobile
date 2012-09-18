@@ -135,7 +135,9 @@ Conditionally loading Facebook and other external Javascripts
 
 Here is an example how to making a Facebook Like Box has been
 made conditionally, so that mobile clients do not load craploads
-of Facebook resources for nothing::
+of Facebook resources for nothing.
+
+Add the following to a static text portlet in Plone::
 
     <div class="fb-like-box" data-href="https://www.facebook.com/pages/xxx/yyy" data-width="292" data-height="337" data-show-faces="false" data-stream="true" data-header="false"></div>
 

@@ -66,10 +66,13 @@ class Viewlets(BrowserView):
         # Create viewlet and put it to the acquisition chain
         # Viewlet need initialization parameters: context, request, view
         try:
-            viewlet = factory(context, request, self, None).__of__(context)
+            viewlet = factory(context, request, self, None)
         except TypeError:
             # Bad constructor call parameters
             raise RuntimeError("Unable to initialize viewlet %s. Factory method %s call failed." % (name, str(factory)))
+
+        if hasattr(viewlet, "__of__"):
+            viewlet = viewlet.__of__(context)
 
         return viewlet
 

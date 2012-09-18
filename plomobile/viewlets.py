@@ -74,7 +74,7 @@ class MobileUIFooter(grok.Viewlet):
         We need to pull some magic here because section rendering code
         might have been customized...
         """
-        context = self.context
+        context = self.context.aq_inner
         viewlets = Viewlets(context, self.request)
         sections = viewlets.traverse("plone.global_sections")
 

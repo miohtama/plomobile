@@ -5,7 +5,7 @@
  */
 
 body {
-    font-size: 1.5em;
+    font-size: 1em;
     background: #fffffe !important; /* Set magic marker read by Javascript isMobile() */
 
     /* http://stackoverflow.com/questions/6210788/how-to-avoid-ios-automatic-font-size-adjustment */

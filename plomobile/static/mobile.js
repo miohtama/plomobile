@@ -144,6 +144,12 @@
 
             var self = this;
 
+            if(this.isThinClient()) {
+                // Avoid Opera Mini issues
+                // no client-side clickable elements
+                return;
+            }
+
             // Currently handled on the server-side
             // for thin client compatibilty
             // this.createSections();
@@ -169,6 +175,11 @@
         createSearch : function() {
             var self = this;
 
+            if(this.isThinClient()) {
+                // Avoid Opera Mini issues
+                // no client-side clickable elements
+                return;
+            }
 
             // Currently handled on the server-side
             // for thin client compability
@@ -295,7 +306,7 @@
          */
         isThinClient : function() {
             // http://my.opera.com/community/openweb/idopera/
-            return window.opera && "Mobi" in navigator.userAgent;
+            return window.opera && navigator.userAgent.indexOf("Mobi") > 0;
             //return true;
         },
 
@@ -352,6 +363,10 @@
             if($("#content-core .mobile-tile-link").size() > 0) {
                 $("#content-core").addClass("content-core-tile-links");
             }
+        },
+
+        enableCarousels : function() {
+            $(".image-portlet-carousel").show();
         },
 
 
@@ -419,6 +434,7 @@
             this.defloatTOC();
 
             // this.copyLogo();
+            this.enableCarousels();
             this.disableIcons();
 
             console.log("mobilizeend");

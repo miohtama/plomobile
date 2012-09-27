@@ -34,7 +34,7 @@ tweaks cannot be achieved with CSS tuning alone.
 
 * Turn lists to mobile friendly tile links
 
-* Suffling UI elements around for more sane mobile layout
+* Shuffling UI elements around for more sane mobile layout
 
 
 Tweaking

@@ -674,3 +674,11 @@ table.listing {
     display: none;
 }
 
+/* Image defloats */
+
+.defloated {
+    display: block !important;
+    margin: 1em auto;
+    float: none;
+    clear: both;
+}

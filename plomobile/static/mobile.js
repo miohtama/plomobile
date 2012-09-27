@@ -325,8 +325,12 @@
 
             selector = $(selector);
 
-            // Replace inline float styles
-            selector.attr("style", "diplay: block !important; margin: 1em auto; float: none; clear: none");
+            // Remove inline float styles
+            selector.removeAttr("style");
+
+            // Add special CSS to make it block
+            selector.addClass("defloated");
+
             // Make surrounding <a> also a block
             selector.parent("a").attr("style", "display: block; margin: 0 auto; text-align: center");
         },

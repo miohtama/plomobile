@@ -6,8 +6,8 @@ Goals and usage
 Introduction
 -------------
 
-Plomobile is a modern mobile site solution for Plone. It focuses on delivering
-good accetable user experience for read-only site access on most mobile phones.
+Plomobile is a modern mobile site solution for `Plone CMS <http://plone.org>`_. 
+It delivers good mobile user experience on both smartphones and thin client mobile browsers.
 
 Design goals
 --------------
